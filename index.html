@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bageri Normandie — Franskt hantverksbageri på Torggatan 1B, Linköping</title>
+<meta name="description" content="Franskt hantverksbageri och kafé i Linköping. Croissant, pain au chocolat, brioche och beställningsgjorda mackor. Torggatan 1B.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --flour:#FBF7EE; --flour-2:#F3EBD9; --crust:#9A5A26; --butter:#F1C86B; --navy:#1E2F4D;
+    --navy-2:#162239; --brick:#B34A2E; --text:#231C14; --muted:#6B5E4B; --line:rgba(35,28,20,.15);
+    --bg:var(--flour); --fg:var(--text);
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    color-scheme:light dark;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14110D; --fg:#F6EEDC; --text:#F6EEDC; --muted:#BEB19A; --line:rgba(246,238,220,.16);
+      --flour:#14110D; --flour-2:#1E1913; --butter:#F1C86B; --brick:#E0694B;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14110D; --fg:#F6EEDC; --text:#F6EEDC; --muted:#BEB19A; --line:rgba(246,238,220,.16);
+    --flour:#14110D; --flour-2:#1E1913; --butter:#F1C86B; --brick:#E0694B;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:"DM Sans","Helvetica Neue",Arial,sans-serif;font-size:clamp(16px,1.05vw,17.5px);line-height:1.65;overflow-x:hidden}
+  h1,h2,h3{font-family:"DM Serif Display",Georgia,serif;font-weight:400;margin:0;line-height:1.05}
+  h1{font-size:clamp(3rem,8.6vw,6.4rem)}
+  h2{font-size:clamp(2rem,4.5vw,3.3rem)}
+  h3{font-size:clamp(1.3rem,2vw,1.6rem)}
+  p{margin:0 0 1em;max-width:60ch}
+  a{color:inherit}
+  svg{max-width:100%}
+  :focus-visible{outline:2px solid var(--brick);outline-offset:3px;border-radius:2px}
+  .wrap{width:min(1180px,92vw);margin-inline:auto}
+  .prog{position:fixed;top:0;left:0;right:0;height:3px;background:var(--brick);transform-origin:left;transform:scaleX(0);z-index:70}
+
+  header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);background:color-mix(in srgb,var(--bg) 84%,transparent);border-bottom:1px solid transparent;transition:border-color .3s}
+  header.nav.is-stuck{border-bottom-color:var(--line)}
+  .nav__in{display:flex;align-items:center;gap:1.5rem;height:72px}
+  .brand{margin-right:auto;text-decoration:none;font-family:"DM Serif Display",serif;font-size:1.45rem}
+  .nav a.link{display:none;text-decoration:none;color:var(--muted);font-size:.95rem}
+  .nav a.link:hover{color:var(--fg)}
+  @media (min-width:860px){.nav a.link{display:inline}}
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:.85rem 1.6rem;border-radius:999px;border:1px solid var(--navy);background:var(--navy);color:#FBF7EE;text-decoration:none;font-weight:600;font-size:.95rem;transition:background .2s,transform .15s;white-space:nowrap}
+  .btn:hover{background:var(--navy-2)}
+  .btn:active{transform:translateY(1px)}
+  .btn--ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+  .btn--ghost:hover{background:color-mix(in srgb,var(--fg) 7%,transparent)}
+  .btn--butter{background:var(--butter);border-color:var(--butter);color:#2A1D08}
+  .btn--butter:hover{background:#E3B84F}
+  :root[data-theme="dark"] .btn:not(.btn--ghost):not(.btn--butter){background:var(--butter);border-color:var(--butter);color:#2A1D08}
+  .nav .btn{padding:.55rem 1.2rem}
+
+  /* hero with breton stripes */
+  .hero{position:relative;overflow:hidden;background:var(--flour-2)}
+  .hero::before{content:"";position:absolute;inset:0 0 auto 0;height:14px;background:repeating-linear-gradient(90deg,var(--navy) 0 28px,transparent 28px 56px)}
+  .hero__grid{display:grid;gap:2rem;align-items:center;padding:clamp(3.5rem,8vw,6rem) 0 clamp(3.5rem,8vw,6rem);grid-template-columns:1fr}
+  @media (min-width:900px){.hero__grid{grid-template-columns:1.05fr .95fr}}
+  .tag{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brick);font-weight:700;margin-bottom:1.1rem}
+  .hero h1 em{font-style:italic;color:var(--crust)}
+  :root[data-theme="dark"] .hero h1 em{color:var(--butter)}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero h1 em{color:var(--butter)}}
+  .lede{font-size:clamp(1.05rem,1.6vw,1.28rem);color:var(--muted);max-width:44ch;margin-top:1.2rem}
+  .cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.9rem}
+  .art{position:relative;max-width:480px;margin-inline:auto;width:100%;aspect-ratio:1}
+  .art svg{position:absolute;width:100%;height:100%;inset:0}
+  .art .s{position:absolute;width:44%;height:44%;inset:auto}
+  .s1{top:2%;right:0}.s2{bottom:0;left:0}.s3{bottom:6%;right:4%;width:34%;height:34%}
+
+  .facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border-block:1px solid var(--line)}
+  @media (min-width:760px){.facts{grid-template-columns:repeat(4,1fr)}}
+  .facts div{background:var(--bg);padding:1.1rem 1rem;text-align:center;font-weight:700;font-size:.97rem}
+  .facts small{display:block;color:var(--muted);font-weight:400;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.15rem}
+
+  section{padding:clamp(4.2rem,9vw,7.5rem) 0}
+  .kicker{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brick);font-weight:700;margin-bottom:1rem}
+  .lead{font-size:clamp(1.1rem,1.8vw,1.35rem);max-width:38ch;line-height:1.5}
+  .two{display:grid;gap:clamp(2rem,5vw,4.5rem);grid-template-columns:1fr}
+  @media (min-width:900px){.two{grid-template-columns:.85fr 1.15fr;align-items:start}}
+
+  /* pastry cards */
+  .cards{display:grid;gap:1.2rem;margin-top:2.6rem}
+  @media (min-width:700px){.cards{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1040px){.cards{grid-template-columns:repeat(4,1fr)}}
+  .card{border:1px solid var(--line);background:var(--flour-2);overflow:hidden}
+  .card figure{margin:0;aspect-ratio:1;display:grid;place-items:center;background:var(--tint,#F7E3B5)}
+  .card figure svg{width:74%;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .card:hover figure svg{transform:scale(1.06) rotate(-2deg)}
+  .card div{padding:1.2rem 1.3rem 1.5rem}
+  .card p{color:var(--muted);font-size:.95rem;margin:.4rem 0 0}
+
+  /* scroll-drawn timeline: warms up as you scroll */
+  .oven{--warm:0;background:color-mix(in srgb,#E9A64A calc(var(--warm)*34%),var(--bg));transition:background .15s linear}
+  .tl{position:relative;display:grid;gap:2.2rem;margin-top:3rem;padding-left:3.4rem}
+  .tl svg{position:absolute;left:0;top:0;width:28px;height:100%;overflow:visible}
+  .tl .track{stroke:var(--line);stroke-width:3;fill:none}
+  .tl .draw{stroke:var(--brick);stroke-width:3;fill:none;stroke-linecap:round}
+  .tl .step{position:relative}
+  .tl .step::before{content:"";position:absolute;left:-3.4rem;top:.35rem;width:28px;height:28px;border-radius:50%;background:var(--bg);border:3px solid var(--line);transition:border-color .4s,background .4s}
+  .tl .step.on::before{border-color:var(--brick);background:var(--butter)}
+  .tl .step p{color:var(--muted);margin:.3rem 0 0}
+
+  .rev{background:var(--navy);color:#F6EEDC}
+  .rev h2{color:#FBF7EE}.rev .kicker{color:var(--butter)}
+  .score{display:flex;align-items:baseline;gap:1rem}
+  .score b{font-family:"DM Serif Display",serif;font-weight:400;font-size:5.5rem;line-height:1;color:#FBF7EE}
+  .stars{color:var(--butter);letter-spacing:.2em}
+  .quote{border-left:3px solid var(--butter);padding-left:1.2rem;margin:1.6rem 0;font-family:"DM Serif Display",serif;font-size:1.35rem;line-height:1.3;color:#FBF7EE}
+  .quote cite{display:block;font-family:"DM Sans",sans-serif;font-style:normal;font-size:.85rem;color:#C5CCDA;margin-top:.5rem}
+  .rev p{color:#D3D9E4}
+
+  .map{border:1px solid var(--line);background:var(--flour-2);aspect-ratio:4/3;width:100%;display:block}
+  .addr{margin-top:1.8rem;border-top:1px solid var(--line)}
+  .addr div{display:grid;grid-template-columns:8rem 1fr;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+  .addr dt{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .addr dd{margin:0;font-weight:600}
+  .addr a{text-decoration:none;border-bottom:2px solid var(--butter)}
+
+  .final{background:var(--butter);color:#2A1D08;text-align:center}
+  .final h2{max-width:16ch;margin-inline:auto}
+  .final p{margin-inline:auto;color:#4A3711}
+  .final .cta{justify-content:center}
+  .final .btn{background:var(--navy);border-color:var(--navy);color:#FBF7EE}
+  .final .btn--ghost{background:transparent;color:#2A1D08;border-color:rgba(42,29,8,.4)}
+
+  footer{padding:2.4rem 0;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+  .foot{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between}
+  footer a{text-decoration:none;color:var(--fg)}
+
+  .r{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .r.is-in{opacity:1;transform:none}
+  .r[data-d="1"]{transition-delay:.1s}.r[data-d="2"]{transition-delay:.2s}.r[data-d="3"]{transition-delay:.3s}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.r{opacity:1;transform:none;transition:none}.oven{transition:none}.card figure svg{transition:none}}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="croissant" viewBox="0 0 200 200">
+      <ellipse cx="100" cy="168" rx="74" ry="9" fill="#000" opacity=".12"/>
+      <path d="M20 128c-6-34 18-64 44-72l14 52z" fill="#C98532"/>
+      <path d="M180 128c6-34-18-64-44-72l-14 52z" fill="#C98532"/>
+      <path d="M44 150c-14-14-10-46 10-66l30 56z" fill="#D9973F"/>
+      <path d="M156 150c14-14 10-46-10-66l-30 56z" fill="#D9973F"/>
+      <path d="M64 56c14-16 58-16 72 0l-10 80q-26 20-52 0z" fill="#E7AC52"/>
+      <path d="M78 52l6 78M100 48v88M122 52l-6 78" stroke="#B87326" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M72 66q28-14 56 0" stroke="#F6CE86" stroke-width="5" fill="none" stroke-linecap="round" opacity=".7"/>
+    </symbol>
+    <symbol id="painchoc" viewBox="0 0 200 200">
+      <ellipse cx="100" cy="164" rx="76" ry="9" fill="#000" opacity=".12"/>
+      <rect x="28" y="70" width="144" height="82" rx="30" fill="#D9973F"/>
+      <rect x="28" y="70" width="144" height="40" rx="20" fill="#E7AC52"/>
+      <path d="M50 82v54M76 76v66M102 74v70M128 76v66M152 82v54" stroke="#B87326" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/>
+      <rect x="40" y="84" width="120" height="8" rx="4" fill="#4B2A1C" opacity=".75"/>
+      <path d="M44 90h112" stroke="#F6CE86" stroke-width="3" opacity=".6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="baguette" viewBox="0 0 200 200">
+      <ellipse cx="100" cy="170" rx="80" ry="8" fill="#000" opacity=".12"/>
+      <g transform="rotate(-28 100 100)"><rect x="-6" y="84" width="212" height="34" rx="17" fill="#D9973F"/><rect x="-6" y="84" width="212" height="14" rx="7" fill="#E7AC52"/>
+      <g stroke="#9A5A26" stroke-width="5" stroke-linecap="round"><path d="M30 92l14 18M66 92l14 18M102 92l14 18M138 92l14 18M174 92l12 16"/></g></g>
+    </symbol>
+    <symbol id="brioche" viewBox="0 0 200 200">
+      <ellipse cx="100" cy="166" rx="74" ry="9" fill="#000" opacity=".12"/>
+      <path d="M36 150q-10-74 64-74t64 74z" fill="#C98532"/>
+      <circle cx="100" cy="62" r="24" fill="#D9973F"/><circle cx="100" cy="62" r="24" fill="none" stroke="#B87326" stroke-width="3"/>
+      <path d="M52 140q-4-40 36-52M148 140q4-40-36-52" stroke="#E7AC52" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"/>
+      <path d="M60 120q40 12 80 0" stroke="#B87326" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="#top">Bageri Normandie</a>
+    <a class="link" href="#bakverk">Bakverk</a>
+    <a class="link" href="#hantverk">Hantverket</a>
+    <a class="link" href="#hitta">Hitta hit</a>
+    <a class="btn" href="#hitta">Kom förbi</a>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap hero__grid">
+    <div>
+      <p class="tag">Franskt hantverksbageri · Linköping</p>
+      <h1>Bröd och bakverk <em>à la française</em></h1>
+      <p class="lede">Smördegsbakverk, brioche och mackor gjorda på beställning – bakat för hand i hjärtat av Linköping, med öppen produktion så att du ser hantverket.</p>
+      <div class="cta">
+        <a class="btn" href="#hitta">Kom förbi på Torggatan</a>
+        <a class="btn btn--ghost" href="#bakverk">Se bakverken</a>
+      </div>
+    </div>
+    <div class="art" aria-hidden="true">
+      <svg viewBox="0 0 200 200" data-par="0.05"><use href="#croissant"/></svg>
+      <svg class="s s1" viewBox="0 0 200 200" data-par="-0.14"><use href="#brioche"/></svg>
+      <svg class="s s2" viewBox="0 0 200 200" data-par="-0.22"><use href="#painchoc"/></svg>
+      <svg class="s s3" viewBox="0 0 200 200" data-par="-0.1"><use href="#baguette"/></svg>
+    </div>
+  </div>
+</div>
+
+<div class="facts">
+  <div><small>Betyg</small>4,9 ★ (234)</div>
+  <div><small>Adress</small>Torggatan 1B</div>
+  <div><small>Idag</small>Öppet till 17:00</div>
+  <div><small>Pris</small>100–200 kr</div>
+</div>
+
+<section id="bakverk">
+  <div class="wrap">
+    <div class="r"><p class="kicker">Bakverk</p><h2>Det gästerna kommer för</h2></div>
+    <div class="cards">
+      <article class="card r"><figure style="--tint:#F7E3B5"><svg viewBox="0 0 200 200" role="img" aria-label="Illustration av en croissant"><use href="#croissant"/></svg></figure><div><h3>Croissant</h3><p>Smörig och knaprig, med tydliga lager.</p></div></article>
+      <article class="card r" data-d="1"><figure style="--tint:#F2D6C4"><svg viewBox="0 0 200 200" role="img" aria-label="Illustration av ett pain au chocolat"><use href="#painchoc"/></svg></figure><div><h3>Pain au chocolat</h3><p>Smördeg med choklad i mitten, klassikern.</p></div></article>
+      <article class="card r" data-d="2"><figure style="--tint:#E7E1C8"><svg viewBox="0 0 200 200" role="img" aria-label="Illustration av en brioche"><use href="#brioche"/></svg></figure><div><h3>Brioche</h3><p>Len, rik och doftande av smör.</p></div></article>
+      <article class="card r" data-d="3"><figure style="--tint:#DDE4EC"><svg viewBox="0 0 200 200" role="img" aria-label="Illustration av en baguette"><use href="#baguette"/></svg></figure><div><h3>Mackor på beställning</h3><p>Görs när du beställer, inte dagen innan.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="oven" id="hantverk">
+  <div class="wrap two">
+    <div class="r">
+      <p class="kicker">Hantverket</p>
+      <h2>Från deg till disk</h2>
+      <p class="lead" style="margin-top:1rem">Vi bakar på plats och du kan se produktionen från caféet.</p>
+    </div>
+    <div>
+      <div class="tl" id="tl">
+        <svg viewBox="0 0 28 100" preserveAspectRatio="none" aria-hidden="true"><path class="track" d="M14 0V100" vector-effect="non-scaling-stroke"/><path class="draw" id="draw" d="M14 0V100" vector-effect="non-scaling-stroke"/></svg>
+        <div class="step"><h3>Degen</h3><p>Smör, mjöl och tid – enkla råvaror, noggrant hanterade.</p></div>
+        <div class="step"><h3>Jäsningen</h3><p>Ingen brådska. Smaken byggs medan degen vilar.</p></div>
+        <div class="step"><h3>Ugnen</h3><p>Gyllene, knapriga ytor och doften som drar in folk från torget.</p></div>
+        <div class="step"><h3>Disken</h3><p>Nybakat till kaffet, eller med hem i påsen.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rev">
+  <div class="wrap two">
+    <div class="r">
+      <p class="kicker">Omdömen</p>
+      <div class="score"><b>4,9</b><span class="stars" aria-label="Fem stjärnor">★★★★★</span></div>
+      <p style="margin-top:.4rem">Snittbetyg från 234 Google-omdömen</p>
+    </div>
+    <div class="r" data-d="1">
+      <h2>Gästerna sätter orden</h2>
+      <blockquote class="quote">Det bästa bageriet jag hittills har varit på i Sverige.<cite>— Google-recension</cite></blockquote>
+      <p>En annan gäst beskriver croissant och pain au chocolat som både vackra och mycket goda, och uppskattar att mackorna görs på beställning och inte ligger framme i timmar.</p>
+    </div>
+  </div>
+</section>
+
+<section id="hitta">
+  <div class="wrap two">
+    <div class="r">
+      <p class="kicker">Hitta hit</p>
+      <h2>Torggatan 1B</h2>
+      <p style="color:var(--muted);margin-top:1rem">Mitt i Linköping, vid torget. Bryggkaffe eller espresso till bakverken, och sittplatser både inne och ute.</p>
+      <dl class="addr">
+        <div><dt>Adress</dt><dd>Torggatan 1B, 582 19 Linköping</dd></div>
+        <div><dt>Idag</dt><dd>Öppet, stänger 17:00</dd></div>
+        <div><dt>Webb</dt><dd><a href="https://bagerinormandie.se" target="_blank" rel="noopener">bagerinormandie.se</a></dd></div>
+        <div><dt>Plus code</dt><dd>CJ6C+48 Linköping</dd></div>
+      </dl>
+      <a class="btn" style="margin-top:1.6rem" href="https://www.google.com/maps/search/?api=1&amp;query=Bageri%20Normandie%2C%20Torggatan%201B%2C%20582%2019%20Link%C3%B6ping" target="_blank" rel="noopener">Vägbeskrivning</a>
+    </div>
+    <div class="r" data-d="1">
+      <svg class="map" viewBox="0 0 420 315" role="img" aria-label="Förenklad karta över Torggatan i Linköping">
+        <rect width="420" height="315" fill="var(--flour-2)"/>
+        <g stroke="var(--line)" stroke-width="7" fill="none"><path d="M60 0V315M310 0V315M0 80H420M0 240H420"/></g>
+        <rect x="150" y="100" width="120" height="100" fill="var(--bg)" stroke="var(--line)"/>
+        <text x="168" y="156" font-family="DM Sans, sans-serif" font-size="11" fill="var(--muted)">Stora torget</text>
+        <path d="M0 210H420" stroke="var(--butter)" stroke-width="12" opacity=".7"/>
+        <rect x="222" y="204" width="44" height="34" fill="var(--navy)"/>
+        <text x="274" y="222" font-family="DM Sans, sans-serif" font-size="13" fill="var(--fg)">Bageri Normandie</text>
+        <text x="274" y="238" font-family="DM Sans, sans-serif" font-size="11" fill="var(--muted)">Torggatan 1B</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2 class="r">Dags för en croissant?</h2>
+    <p class="r" data-d="1" style="margin-top:1rem">Kom förbi för fika, mackor eller bröd med hem. Idag har vi öppet till 17:00.</p>
+    <div class="cta r" data-d="2">
+      <a class="btn" href="#hitta">Hitta hit</a>
+      <a class="btn btn--ghost" href="https://bagerinormandie.se" target="_blank" rel="noopener">Besök bagerinormandie.se</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div><b style="font-family:'DM Serif Display',serif;font-weight:400;font-size:1.25rem">Bageri Normandie</b><br>Torggatan 1B, 582 19 Linköping</div>
+    <div><a href="#bakverk">Bakverk</a> &nbsp; <a href="#hantverk">Hantverket</a> &nbsp; <a href="#hitta">Hitta hit</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -12% 0px',threshold:.15});
+  document.querySelectorAll('.r').forEach(function(el){io.observe(el)});
+
+  var prog=document.getElementById('prog'), nav=document.getElementById('nav'),
+      oven=document.getElementById('hantverk'), tl=document.getElementById('tl'),
+      draw=document.getElementById('draw'), steps=[].slice.call(tl.querySelectorAll('.step')),
+      par=[].slice.call(document.querySelectorAll('[data-par]')), t=false;
+
+  draw.style.strokeDasharray='100'; draw.setAttribute('pathLength','100');
+  draw.style.strokeDashoffset = reduce ? '0' : '100';
+
+  function frame(){
+    t=false;
+    var y=scrollY, max=Math.max(document.body.scrollHeight-innerHeight,1);
+    prog.style.transform='scaleX('+Math.min(y/max,1)+')';
+    nav.classList.toggle('is-stuck',y>24);
+    if(reduce){steps.forEach(function(s){s.classList.add('on')});return}
+    par.forEach(function(el){el.style.transform='translate3d(0,'+(y*parseFloat(el.dataset.par))+'px,0)'});
+
+    var r=tl.getBoundingClientRect(), vh=innerHeight;
+    var p=Math.min(Math.max((vh*0.7-r.top)/(r.height),0),1);
+    draw.style.strokeDashoffset=String(100-p*100);
+    steps.forEach(function(s,i){s.classList.toggle('on',p>=(i+.4)/steps.length)});
+    var o=oven.getBoundingClientRect(), w=Math.min(Math.max((vh-o.top)/(vh+o.height),0),1);
+    oven.style.setProperty('--warm',Math.sin(w*Math.PI).toFixed(3));
+  }
+  function on(){if(!t){t=true;requestAnimationFrame(frame)}}
+  addEventListener('scroll',on,{passive:true});addEventListener('resize',on);frame();
+})();
+</script>
+</body>
+</html>
